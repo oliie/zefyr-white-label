@@ -2,4 +2,6 @@
 	import Income from '$widgets/Income.svelte';
 </script>
 
-<Income />
+<div class="flex flex-col gap-4">
+	<Income />
+</div>
