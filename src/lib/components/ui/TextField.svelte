@@ -6,7 +6,7 @@
 	export let large = false;
 </script>
 
-<div class="form-control w-full max-w-xs">
+<div class="form-control w-full">
 	{#if label}
 		<label class="label" for={id}>
 			<span class="label-text">{label}</span>
