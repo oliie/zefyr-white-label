@@ -13,7 +13,7 @@
 		</label>
 	{/if}
 	<input
-		{value}
+		bind:value
 		type="number"
 		{placeholder}
 		class="input input-bordered w-full bg-transparent"
