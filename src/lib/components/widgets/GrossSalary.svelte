@@ -1,4 +1,5 @@
 <script>
+	import { formatterToSek } from '$lib/helpers';
 	import Card from '$ui/Card.svelte';
 
 	export let value = '0';
@@ -7,18 +8,11 @@
 
 	$: grossSalary = Math.round(+value / (1 + payrollTax));
 	$: taxes = Math.round(+value - grossSalary);
-
-	const formatterToSek = new Intl.NumberFormat('sv-SE', {
-		style: 'currency',
-		currency: 'SEK',
-		minimumFractionDigits: 0,
-		maximumFractionDigits: 0
-	});
 </script>
 
 <Card header="Möjlig bruttolön">
 	<div class="flex flex-col items-center gap-2">
-		<span class="text-4xl text-zefyr-orange font-medium">
+		<span class="text-4xl font-medium text-primary">
 			{formatterToSek.format(grossSalary)}
 		</span>
 		<div class="flex flex-col items-center">

@@ -2,10 +2,10 @@
 	export let header = '';
 </script>
 
-<div class="card w-full bg-slate-500/5 shadow-xl p-4">
+<div class="w-full p-4 shadow-xl card bg-slate-500/5">
 	{#if header}
-		<div class="card-header mb-4">
-			<h2 class="card-title justify-center md:justify-start">{header}</h2>
+		<div class="mb-4 card-header">
+			<h2 class="justify-center card-title md:justify-start text-secondary">{header}</h2>
 		</div>
 	{/if}
 	<slot />

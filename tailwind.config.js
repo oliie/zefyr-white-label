@@ -18,5 +18,18 @@ export default {
 			}
 		}
 	},
+	daisyui: {
+		themes: [
+			{
+				dark: {
+					// eslint-disable-next-line @typescript-eslint/no-var-requires
+					...require('daisyui/src/theming/themes')['[data-theme=dark]'],
+					// primary: '#fb8500',
+					primary: '#e76f51',
+					secondary: '#799aa7'
+				}
+			}
+		]
+	},
 	plugins: [require('daisyui')]
 };
