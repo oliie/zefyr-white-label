@@ -11,6 +11,10 @@
 	let useItp1 = true;
 </script>
 
+<svelte:head>
+	<title>Zefyr | Lön</title>
+</svelte:head>
+
 <div class="flex flex-col gap-4">
 	<Income bind:value={income} />
 	<Expenses />
