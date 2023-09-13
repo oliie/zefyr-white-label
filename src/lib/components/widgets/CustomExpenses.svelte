@@ -29,7 +29,7 @@
 	];
 </script>
 
-<Card header="Egna utlägg">
+<Card header="Övriga utgifter">
 	<div class="flex flex-col gap-2">
 		{#each expanses as { label, value }, i}
 			<CustomExpanseInput bind:label bind:value on:click={() => removeExpanse(i)} />
