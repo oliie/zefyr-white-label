@@ -10,7 +10,10 @@
 <Card header="Pension">
 	<div class="w-full form-control">
 		<label class="cursor-pointer label">
-			<span class="font-medium label-text">Enligt ITP 1</span>
+			<div class="flex flex-col">
+				<span class="font-medium label-text">Enligt ITP 1</span>
+				<i class="text-sm">Tjänstepension enligt ITP 1</i>
+			</div>
 			<input type="checkbox" class="toggle toggle-primary" bind:checked={useItp1} />
 		</label>
 	</div>
