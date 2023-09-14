@@ -12,6 +12,8 @@
 		employeeBenefitValue: number;
 	};
 
+	export let value = 0;
+
 	const residualValue = 48;
 	const deposit = 15;
 	const leasingTime = 36;
@@ -37,6 +39,7 @@
 	];
 
 	$: car = chosenCar ? cars.find((c) => c.id === chosenCar) : null;
+	$: value = car ? car.benefitValue + car.employeeBenefitValue : 0;
 </script>
 
 <Card header="Förmånsbil">

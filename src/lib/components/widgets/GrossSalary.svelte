@@ -7,7 +7,7 @@
 	const payrollTax = 0.3142;
 
 	$: grossSalary = Math.round(+value / (1 + payrollTax));
-	$: taxes = Math.round(+value - grossSalary);
+	// $: taxes = Math.round(+value - grossSalary);
 </script>
 
 <Card header="Möjlig bruttolön">

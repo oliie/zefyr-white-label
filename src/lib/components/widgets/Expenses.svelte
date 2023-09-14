@@ -1,23 +1,11 @@
 <script lang="ts">
 	import Card from '$ui/Card.svelte';
-	import CustomExpanseInput from '$ui/ExpenseInput.svelte';
+	import ExpenseInput from '$ui/ExpenseInput.svelte';
+	import { createEventDispatcher } from 'svelte';
 
-	type ExpanseInput = {
-		label: string;
-		value: string;
-	};
+	const dispatch = createEventDispatcher();
 
-	const addExpanse = () => {
-		expanses.push({ label: '', value: '' });
-		expanses = expanses;
-	};
-
-	const removeExpanse = (i: number) => {
-		expanses.splice(i, 1);
-		expanses = expanses;
-	};
-
-	let expanses: ExpanseInput[] = [
+	let expenses: ExpenseInput[] = [
 		{
 			label: 'Dator',
 			value: ''
@@ -39,16 +27,45 @@
 			value: ''
 		}
 	];
+
+	type ExpenseInput = {
+		label: string;
+		value: string;
+	};
+
+	const dispatchExpenses = () => {
+		const totalExpenses = expenses.reduce((acc, { value }) => {
+			acc += value ? parseInt(value) : 0;
+			return acc;
+		}, 0);
+
+		dispatch('total', totalExpenses);
+	};
+
+	const addExpense = () => {
+		expenses.push({ label: '', value: '' });
+		expenses = expenses;
+	};
+
+	const removeExpense = (i: number) => {
+		expenses.splice(i, 1);
+		expenses = expenses;
+	};
 </script>
 
 <Card header="Utgifter">
 	<div class="flex flex-col gap-2">
-		{#each expanses as { label, value }, i}
-			<CustomExpanseInput bind:label bind:value on:click={() => removeExpanse(i)} />
+		{#each expenses as { label, value }, i}
+			<ExpenseInput
+				on:input={dispatchExpenses}
+				bind:label
+				bind:value
+				on:click={() => removeExpense(i)}
+			/>
 		{/each}
 	</div>
 	<div>
-		<button class="w-full mt-2 btn btn-primary btn-outline" on:click={addExpanse}>
+		<button class="w-full mt-2 btn btn-primary btn-outline" on:click={addExpense}>
 			Lägg till +
 		</button>
 	</div>
