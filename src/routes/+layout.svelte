@@ -5,6 +5,6 @@
 </script>
 
 <Container>
-	<Logotype src="https://pixelcode.se/wp-content/uploads/2023/01/pc_logo_web_1.png" />
+	<Logotype src="/zefyr_logo.png" />
 	<slot />
 </Container>
