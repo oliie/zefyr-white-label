@@ -13,11 +13,11 @@
 <Card header="Möjlig bruttolön">
 	<div class="flex flex-col items-center gap-2">
 		<span class="text-4xl font-medium text-primary">
-			{formatterToSek.format(grossSalary)}
+			{formatterToSek.format(grossSalary)}/mån
 		</span>
-		<div class="flex flex-col items-center">
+		<!-- <div class="flex flex-col items-center">
 			<span>Varav arbetsgivaravgifter:</span>
 			<span class="font-medium">{formatterToSek.format(taxes)}</span>
-		</div>
+		</div> -->
 	</div>
 </Card>

@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { slide } from 'svelte/transition';
 	import { formatterToSek } from '$lib/helpers';
 	import CarKeyVal from '$ui/CarKeyVal.svelte';
 	import Card from '$ui/Card.svelte';
-	import { slide } from 'svelte/transition';
 
 	type Car = {
 		id: number;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card from '$ui/Card.svelte';
-	import CustomExpanseInput from '$ui/CustomExpanseInput.svelte';
+	import CustomExpanseInput from '$ui/ExpenseInput.svelte';
 
 	type ExpanseInput = {
 		label: string;
@@ -19,17 +19,29 @@
 
 	let expanses: ExpanseInput[] = [
 		{
-			label: '',
+			label: 'Dator',
 			value: ''
 		},
 		{
-			label: '',
+			label: 'Mobil',
+			value: ''
+		},
+		{
+			label: 'Mobilabonnemang',
+			value: ''
+		},
+		{
+			label: 'Utbildning',
+			value: ''
+		},
+		{
+			label: 'Friskvård',
 			value: ''
 		}
 	];
 </script>
 
-<Card header="Övriga utgifter">
+<Card header="Utgifter">
 	<div class="flex flex-col gap-2">
 		{#each expanses as { label, value }, i}
 			<CustomExpanseInput bind:label bind:value on:click={() => removeExpanse(i)} />

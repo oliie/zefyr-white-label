@@ -1,7 +1,7 @@
 <script lang="ts">
+	import '../app.css';
 	import Container from '$ui/Container.svelte';
 	import Logotype from '$widgets/Logotype.svelte';
-	import '../app.css';
 </script>
 
 <Container>
