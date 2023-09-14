@@ -1,19 +1,15 @@
-<script>
+<script lang="ts">
 	import { formatterToSek } from '$lib/helpers';
 	import Card from '$ui/Card.svelte';
 
-	export let value = '0';
-
-	const payrollTax = 0.3142;
-
-	$: grossSalary = Math.round(+value / (1 + payrollTax));
+	export let salary: number;
 	// $: taxes = Math.round(+value - grossSalary);
 </script>
 
 <Card header="Möjlig bruttolön">
 	<div class="flex flex-col items-center gap-2">
 		<span class="text-4xl font-medium text-primary">
-			{formatterToSek.format(grossSalary)}/mån
+			{formatterToSek.format(salary)}/mån
 		</span>
 		<!-- <div class="flex flex-col items-center">
 			<span>Varav arbetsgivaravgifter:</span>

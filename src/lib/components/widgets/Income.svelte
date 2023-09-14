@@ -6,5 +6,5 @@
 </script>
 
 <Card header="Intäkt">
-	<NumberField id="income" placeholder="Ange intäkt..." bind:value large />
+	<NumberField id="income" placeholder="Ange intäkt..." bind:value large center />
 </Card>

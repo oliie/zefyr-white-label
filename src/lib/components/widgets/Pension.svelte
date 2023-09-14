@@ -5,6 +5,7 @@
 
 	export let value: string;
 	export let useItp1: boolean;
+	export let output: number | string;
 </script>
 
 <Card header="Pension">
@@ -21,9 +22,9 @@
 			<div class="divider" />
 			<!-- content here -->
 			<input type="range" min="0" max="10000" step="200" bind:value class="range range-primary" />
-			<p class="mt-4 text-xl font-medium text-right text-primary">
-				{formatterToSek.format(+value)}
-			</p>
 		</div>
 	{/if}
+	<p class="mt-4 text-xl font-medium text-right text-primary">
+		{formatterToSek.format(useItp1 ? +output : +value)}
+	</p>
 </Card>

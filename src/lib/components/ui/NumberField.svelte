@@ -4,9 +4,10 @@
 	export let label = '';
 	export let placeholder = '';
 	export let large = false;
+	export let center = false;
 </script>
 
-<div class="form-control w-full">
+<div class="w-full form-control">
 	{#if label}
 		<label class="label" for={id}>
 			<span class="label-text">{label}</span>
@@ -16,13 +17,18 @@
 		bind:value
 		type="number"
 		{placeholder}
-		class="input input-bordered w-full bg-transparent"
+		class="w-full bg-transparent input input-bordered"
 		class:large
+		class:center
 	/>
 </div>
 
 <style lang="postcss">
 	.large {
 		@apply input-lg;
+	}
+
+	.center {
+		@apply text-center;
 	}
 </style>
