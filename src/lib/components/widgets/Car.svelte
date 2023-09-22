@@ -3,6 +3,7 @@
 	import { formatterToSek } from '$lib/helpers';
 	import CarKeyVal from '$ui/CarKeyVal.svelte';
 	import Card from '$ui/Card.svelte';
+	import Output from '$ui/Output.svelte';
 
 	type Car = {
 		id: number;
@@ -88,9 +89,9 @@
 					<div class="p-2 text-sm italic">Kostnaderna utgår även från miljöbonus på 70 000 kr.</div>
 				</div>
 
-				<p class="text-xl font-medium text-right text-primary">
+				<Output>
 					~{formatterToSek.format(car.benefitValue + car.employeeBenefitValue)}/mån
-				</p>
+				</Output>
 			{/if}
 		</div>
 	{/if}

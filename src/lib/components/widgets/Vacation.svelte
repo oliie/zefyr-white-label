@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { formatterToSek } from '$lib/helpers';
 	import Card from '$ui/Card.svelte';
+	import Output from '$ui/Output.svelte';
 
 	export let value: number;
 	export let income: string;
@@ -32,7 +33,7 @@
 		/>
 	</div>
 
-	<p class="mt-4 text-xl font-medium text-right text-primary">
+	<Output>
 		{formatterToSek.format(value)}
-	</p>
+	</Output>
 </Card>

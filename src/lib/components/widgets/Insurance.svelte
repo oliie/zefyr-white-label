@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Card from '$ui/Card.svelte';
 	import { formatterToSek } from '$lib/helpers';
+	import Output from '$ui/Output.svelte';
 
 	export let value: string;
 </script>
@@ -10,7 +11,9 @@
 		<p class="text-center">
 			Schablonkostnad för sjukförsäkring, sjukvårdsförsäkring samt premiebefrielse
 		</p>
-		<!-- Baserat på 1000 kr schablon + 24.26% skatt -->
-		<p class="self-end text-xl font-medium text-primary">{formatterToSek.format(+value)}/mån</p>
 	</div>
+
+	<Output>
+		{formatterToSek.format(+value)}/mån
+	</Output>
 </Card>
