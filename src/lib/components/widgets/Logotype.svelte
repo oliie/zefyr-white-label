@@ -3,6 +3,6 @@
 	export let alt = '';
 </script>
 
-<div class="w-4/5 mx-auto my-8 justify-center flex">
+<div class="flex justify-center w-4/5 mx-auto my-8">
 	<img {src} {alt} />
 </div>
