@@ -42,11 +42,13 @@
 
 <div class="flex flex-col gap-4">
 	<Income bind:value={income} />
-	<Expenses on:total={getTotalExpenses} />
-	<Car bind:value={car} />
-	<Pension bind:value={pension} />
-	<Savings bind:value={savings} />
-	<Vacation bind:value={vacation} {income} />
-	<Insurance bind:value={insurance} />
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+		<Expenses on:total={getTotalExpenses} />
+		<Car bind:value={car} />
+		<Pension bind:value={pension} />
+		<Savings bind:value={savings} />
+		<Vacation bind:value={vacation} {income} />
+		<Insurance bind:value={insurance} />
+	</div>
 	<GrossSalary salary={totalSalary} />
 </div>

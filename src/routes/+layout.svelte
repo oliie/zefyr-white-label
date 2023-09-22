@@ -4,7 +4,7 @@
 	import Logotype from '$widgets/Logotype.svelte';
 </script>
 
-<Container>
+<div class="container max-w-6xl p-4 mx-auto">
 	<Logotype src="/zefyr_logo.png" />
 	<slot />
-</Container>
+</div>
