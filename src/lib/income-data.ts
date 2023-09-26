@@ -61,7 +61,7 @@ const createIncomeDataStore = () => {
 	return {
 		subscribe,
 		set,
-		reset: () => set(initialData)
+		reset: () => set(structuredClone(initialData))
 	};
 };
 
