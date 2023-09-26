@@ -1,14 +1,20 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-// let ready = false;
-// let income = '100000';
-// let insurance = '1000';
-// let pension = '2000';
-// let savings = '5000';
-// let vacation = 1500;
-// let totalExpenses = 0;
-// let car: number;
+export type Expense = {
+	label: string;
+	value: string;
+};
+
+export type IncomeData = {
+	income: string;
+	insurance: string;
+	pension: string;
+	savings: string;
+	vacationChoice: number;
+	carChoice: number;
+	expenses: Expense[];
+};
 
 const initialData = {
 	income: '100000',
@@ -41,16 +47,22 @@ const initialData = {
 	]
 };
 
-const incomeData = writable(
-	browser && localStorage.getItem('data')
-		? JSON.parse(localStorage.getItem('data')) ?? initialData
-		: initialData
-);
+const createIncomeDataStore = () => {
+	const { subscribe, set } = writable<IncomeData>(
+		browser && localStorage.getItem('data')
+			? JSON.parse(localStorage.getItem('data')!) ?? initialData
+			: initialData
+	);
 
-incomeData.subscribe((value) => {
-	if (browser) {
-		localStorage.setItem('data', JSON.stringify(value));
-	}
-});
+	subscribe((value) => {
+		if (browser) localStorage.setItem('data', JSON.stringify(value));
+	});
 
-export { incomeData };
+	return {
+		subscribe,
+		set,
+		reset: () => set(initialData)
+	};
+};
+
+export const incomeData = createIncomeDataStore();

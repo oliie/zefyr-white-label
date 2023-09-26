@@ -1,40 +1,13 @@
 <script lang="ts">
+	import { incomeData } from '$lib/income-data';
 	import Card from '$ui/Card.svelte';
 	import ExpenseInput from '$ui/ExpenseInput.svelte';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 
 	const dispatch = createEventDispatcher();
 
-	let expenses: ExpenseInput[] = [
-		{
-			label: 'Dator',
-			value: ''
-		},
-		{
-			label: 'Mobil',
-			value: ''
-		},
-		{
-			label: 'Mobilabonnemang',
-			value: ''
-		},
-		{
-			label: 'Utbildning',
-			value: ''
-		},
-		{
-			label: 'Friskvård',
-			value: ''
-		}
-	];
-
-	type ExpenseInput = {
-		label: string;
-		value: string;
-	};
-
 	const dispatchExpenses = () => {
-		const totalExpenses = expenses.reduce((acc, { value }) => {
+		const totalExpenses = $incomeData.expenses.reduce((acc, { value }) => {
 			acc += value ? parseInt(value) : 0;
 			return acc;
 		}, 0);
@@ -43,23 +16,25 @@
 	};
 
 	const addExpense = () => {
-		expenses.push({ label: '', value: '' });
-		expenses = expenses;
+		$incomeData.expenses.push({ label: '', value: '' });
+		$incomeData.expenses = [...$incomeData.expenses];
 	};
 
 	const removeExpense = (i: number) => {
-		expenses.splice(i, 1);
-		expenses = expenses;
+		$incomeData.expenses.splice(i, 1);
+		$incomeData.expenses = [...$incomeData.expenses];
 	};
+
+	onMount(() => dispatchExpenses());
 </script>
 
 <Card header="Utgifter">
 	<div class="flex flex-col gap-2">
-		{#each expenses as { label, value }, i}
+		{#each $incomeData.expenses as _e, i}
 			<ExpenseInput
 				on:input={dispatchExpenses}
-				bind:label
-				bind:value
+				bind:label={$incomeData.expenses[i].label}
+				bind:value={$incomeData.expenses[i].value}
 				on:click={() => removeExpense(i)}
 			/>
 		{/each}

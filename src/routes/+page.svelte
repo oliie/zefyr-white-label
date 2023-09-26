@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
+	import { incomeData } from '$lib/income-data';
 	import Car from '$widgets/Car.svelte';
 	import Expenses from '$widgets/Expenses.svelte';
 	import GrossSalary from '$widgets/GrossSalary.svelte';
@@ -15,14 +15,11 @@
 	const pensionTax = 0.2426;
 
 	let ready = false;
-	let income = '100000';
 	let insurance = '1000';
-	let pension = '2000';
-	let savings = '5000';
 	let vacation = 1500;
-	let totalExpenses = 0;
 	let car: number;
 
+	let totalExpenses = 0;
 	let totalPension = 0;
 	let totalSalary = 0;
 
@@ -34,10 +31,12 @@
 
 	onMount(() => (ready = true));
 
-	$: output = +income - (+insurance + +savings + +totalExpenses + +car + +pension + +vacation);
+	$: output =
+		+$incomeData.income -
+		(+insurance + +$incomeData.savings + +totalExpenses + +car + +$incomeData.pension + +vacation);
 
 	$: if (output) {
-		totalPension = +pension + +pension * pensionTax;
+		totalPension = +$incomeData.pension + +$incomeData.pension * pensionTax;
 		totalSalary = Math.round(calculateIncomeWithPayrollTax(output - totalPension));
 	}
 </script>
@@ -48,13 +47,22 @@
 
 {#if ready}
 	<div class="flex flex-col gap-4" transition:scale>
-		<Income bind:value={income} />
+		<div class="flex justify-end">
+			<button class="w-full md:w-auto btn btn-outline btn-primary" on:click={incomeData.reset}>
+				Återställ
+			</button>
+		</div>
+		<Income bind:value={$incomeData.income} />
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			<Expenses on:total={getTotalExpenses} />
-			<Car bind:value={car} />
-			<Pension bind:value={pension} />
-			<Savings bind:value={savings} />
-			<Vacation bind:value={vacation} {income} />
+			<Car bind:value={car} bind:choice={$incomeData.carChoice} />
+			<Pension bind:value={$incomeData.pension} />
+			<Savings bind:value={$incomeData.savings} />
+			<Vacation
+				bind:value={vacation}
+				bind:choice={$incomeData.vacationChoice}
+				income={$incomeData.income}
+			/>
 			<Insurance bind:value={insurance} />
 		</div>
 		<GrossSalary salary={totalSalary} />

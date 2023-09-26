@@ -5,8 +5,7 @@
 
 	export let value: number;
 	export let income: string;
-
-	let choice = 1;
+	export let choice = 1;
 
 	$: if (choice === 1) {
 		value = Math.round(+income * 0.6 * 0.12);

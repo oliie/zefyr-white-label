@@ -14,13 +14,12 @@
 	};
 
 	export let value = 0;
+	export let choice: number;
 
 	const residualValue = 48;
 	const deposit = 15;
 	const leasingTime = 36;
 	const milagePerYear = '1 500';
-
-	let chosenCar = 0;
 
 	const cars: Car[] = [
 		{
@@ -39,7 +38,7 @@
 		}
 	];
 
-	$: car = chosenCar ? cars.find((c) => c.id === chosenCar) : null;
+	$: car = choice ? cars.find((c) => c.id === choice) : null;
 	$: value = car ? car.benefitValue + car.employeeBenefitValue : 0;
 </script>
 
@@ -48,27 +47,27 @@
 		<input
 			class="flex-1 join-item btn"
 			type="radio"
-			bind:group={chosenCar}
+			bind:group={choice}
 			value={0}
 			aria-label="Ingen"
 		/>
 		<input
 			class="flex-1 join-item btn"
 			type="radio"
-			bind:group={chosenCar}
+			bind:group={choice}
 			value={1}
 			aria-label="Small"
 		/>
 		<input
 			class="flex-1 join-item btn"
 			type="radio"
-			bind:group={chosenCar}
+			bind:group={choice}
 			value={2}
 			aria-label="Medium"
 		/>
 	</div>
 
-	{#if chosenCar !== 0}
+	{#if choice !== 0}
 		<div transition:slide>
 			<p class="p-4 text-sm italic">
 				Dessa exempel är endast i illustrativt syfte för att visa hur kostnaden kan se ut.
