@@ -8,9 +8,7 @@
 
 <Card header="Försäkring">
 	<div class="flex flex-col items-center gap-2">
-		<p class="text-center">
-			Schablonkostnad för sjukförsäkring, sjukvårdsförsäkring samt premiebefrielse
-		</p>
+		<p>Schablonkostnad för sjukförsäkring, sjukvårdsförsäkring samt premiebefrielse</p>
 	</div>
 
 	<Output>

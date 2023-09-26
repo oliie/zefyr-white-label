@@ -7,9 +7,17 @@
 </script>
 
 <Card header="Pension">
+	<div>
+		<input type="range" min="0" max="15000" step="200" bind:value class="range range-primary" />
+	</div>
+
+	<Output>
+		{formatterToSek.format(+value)}
+	</Output>
+
 	<div
 		tabindex="0"
-		class="mb-4 border collapse border-base-300 bg-base-200 collapse-arrow"
+		class="mt-4 border collapse border-base-300 bg-base-200 collapse-arrow"
 		role="button"
 	>
 		<div class="min-h-0 px-6 py-2 text-sm font-bold collapse-title">Se ITP 1 nivåer</div>
@@ -36,11 +44,4 @@
 			</table>
 		</div>
 	</div>
-	<div>
-		<input type="range" min="0" max="15000" step="200" bind:value class="range range-primary" />
-	</div>
-
-	<Output>
-		{formatterToSek.format(+value)}
-	</Output>
 </Card>

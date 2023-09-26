@@ -7,10 +7,7 @@
 </script>
 
 <Card header="Sparande">
-	<i class="pb-4 text-sm"
-		>Kan användas till ledighet, arbetsrelaterade inköp, löneväxling, pension, kompetensutveckling,
-		etc.</i
-	>
+	<p class="pb-4">Kan användas till extra ledighet, arbetsrelaterade inköp, löneväxling etc.</p>
 	<input type="range" min="0" max="25000" step="500" bind:value class="range range-primary" />
 	<Output>
 		{formatterToSek.format(+value)}
