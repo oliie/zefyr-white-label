@@ -7,7 +7,7 @@
 	export let value = '';
 </script>
 
-<Card header="Intäkt">
+<Card header="Intäkt till pott">
 	<NumberField id="income" placeholder="Ange intäkt..." bind:value large center />
 	<Output>
 		{formatterToSek.format(+value)}/mån

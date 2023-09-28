@@ -8,9 +8,9 @@
 	export let choice = 1;
 
 	$: if (choice === 1) {
-		value = Math.round(+income * 0.6 * 0.12);
+		value = Math.round(+income * 0.6 * 0.12 * 0.8);
 	} else {
-		value = Math.round(+income * 0.6 * 0.144);
+		value = Math.round(+income * 0.6 * 0.144 * 0.8);
 	}
 </script>
 
